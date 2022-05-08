@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    max-width: 80%;
+    margin: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form > * {
+    margin: 10px;
+}
+
+input + span {
+    padding-right: 30px;
+}
+
+input:invalid + span:after {
+    color:red;
+    position: "absolute";
+    content:'✖';
+    padding-left: 5px;
+}
+
+input:valid + span:after {
+    color: green;
+    position: "absolute";
+    content:'✓';
+    padding-left: 5px;
+}
