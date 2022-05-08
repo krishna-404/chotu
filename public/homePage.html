@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chotu - The Fast url Shortner Service</title>
+
+    <link rel="stylesheet" href="homePage.css">
+</head>
+<body>
+    <h1>
+        <b>Chotu</b> is a quick & hassle free url Shortner Service.
+    </h1>
+    <p>
+        Just enter your url below & get a instant short url. <br><br> Not just that go to &lt;your short url>/stats to get details about the statistics for the usage of the short url.
+    </p>
+    <form action="/submit" method="get">
+        <div>
+            <label for="longUrlInput"> Your Long URL*:</label>
+            <input type="url" id="longUrlInput" name="longUrl" required>
+            <span class="validity"></span>
+        </div>
+        <div>
+            <label for="shortCodeInput">Your desired Short Code:</label>
+            <input type="text" name="shortCode" minlength="4" pattern="[a-zA-Z0-9]{4,}">
+            <span class="validity"></span>
+        </div>
+
+        <div>
+            <button type="submit">Get a Chotu</button>
+        </div>
+    </form>
+</body>
+</html>
