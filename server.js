@@ -12,4 +12,5 @@ app.use(express.static('public'));
 
 apiRoutes(app);
 
-app.listen(port, () => console.log(`Server is live on http://localhost:${port} !`));
+const PORT = process.env.PORT || 1729;
+app.listen(PORT, () => console.log(`Server is live on http://localhost:${PORT} !`));
