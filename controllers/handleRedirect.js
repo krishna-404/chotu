@@ -34,7 +34,9 @@ async function HandleRedirect(req, res) {
 
     //Return the 404 page if it doesn't exist in the system
     else {
-        res.sendFile(__basedir + "/public/404.html");
+        res .status(404)
+            .type('text/html') 
+            .sendFile(__basedir + "/public/404.html");
     }
 
 }

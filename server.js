@@ -20,7 +20,7 @@ apiRoutes(app);
 app.use((req,res,next) => {
     res .status(404)
         .type('text/html')
-        .sendFile(__basedir + "/public/404.html")
+        .sendFile(__basedir + "/public/404.html");
 })
 
 
