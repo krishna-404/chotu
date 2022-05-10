@@ -28,3 +28,9 @@ Accessing https://chotu.onrender.com/< Short Code >/stats returns a json respons
 - Last Access Date (lastAccessDate)
 - Number of times Chotu Link Accessed (totalAccessNumber)
 
+## Tech Stack
+- Nodejs
+- Expressjs
+- HTML/CSS
+- MongoDB
+
