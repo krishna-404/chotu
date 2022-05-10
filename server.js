@@ -17,6 +17,12 @@ mongoUtil.connectToServer((err, client) => {
 
 apiRoutes(app);
 
+app.use((req,res,next) => {
+    res .status(404)
+        .type('text/html')
+        .sendFile(__basedir + "/public/404.html")
+})
+
 
 const PORT = config.port;
 app.listen(PORT, () => console.log(`Server is live on http://localhost:${PORT} !`));
