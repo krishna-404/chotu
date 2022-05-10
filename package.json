@@ -1,7 +1,7 @@
 {
-  "name": "urlshortner-be",
+  "name": "chotu",
   "version": "1.0.0",
-  "description": "Backend for URL shortner program",
+  "description": "URL shortner program",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

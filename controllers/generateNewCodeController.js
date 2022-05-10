@@ -1,25 +1,42 @@
 const { response } = require("express");
-let database = require("../database.js");
+let urlDataDB = require('../MongoUtil').getUrlDataDB;
+const config = require('../config')
 
-function GenerateNewCodeController(req,res) {
+async function GenerateNewCodeController(req,res) {
         const {longUrl, shortCode} = req.query;
-        console.log(database);
-        // console.log({longUrl, shortCode, req}, req.query)
+        
 
         if(shortCode) {
-            for (let i=0; i<database.length; i++) {
-                if(database[i].shortCode === shortCode){
-                    res.send("Short Code already exists, please select a new code.");
-                    break;
-                } 
+            
+            let getData = await urlDataDB().findOne({
+                                shortCode: shortCode   
+                            });  
+
+            // console.log({getData});
+
+            if (!getData) {
+                const newObject = {
+                    longUrl: longUrl,
+                    shortCode: shortCode,
+                    registeredDate: new Date().toISOString,
+                    userId: "public",
+                    lastAccessDate: "",
+                    totalAccessNumber: 0
+                }
+
+                urlDataDB().insertOne(newObject);
+                res.json({
+                    longUrl: longUrl,
+                    chotu: `${config.domainName}${shortCode}`
+                })
+            } else {
+                res.json({
+                    error: "This Short Code already exists."
+                })
             }
-            let newObject = {
-                longUrl: longUrl,
-                shortCode: shortCode,
-                registeredDate: new Date().toISOString,
-            }
-            database.push(newObject);
-            res.send("Congragulations! Your new chotu has been created. Here is the link.")
+            console.log("End of Data work")
+
+            // res.send("Congragulations! Your new chotu has been created. Here is the link.")
         } else {
             res.send(req);
         }
