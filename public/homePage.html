@@ -9,27 +9,36 @@
     <link rel="stylesheet" href="homePage.css">
 </head>
 <body>
-    <h1>
-        <b>Chotu</b> is a quick & hassle free url Shortner Service.
-    </h1>
-    <p>
-        Just enter your url below & get a instant short url. <br><br> Not just that go to &lt;your short url>/stats to get details about the statistics for the usage of the short url.
-    </p>
-    <form action="/submit" method="get">
-        <div>
-            <label for="longUrlInput"> Your Long URL*:</label>
-            <input type="url" id="longUrlInput" name="longUrl" required>
-            <span class="validity"></span>
-        </div>
-        <div>
-            <label for="shortCodeInput">Your desired Short Code:</label>
-            <input type="text" name="shortCode" minlength="4" pattern="[a-zA-Z0-9]{4,}">
-            <span class="validity"></span>
-        </div>
+    <div id="content-div">
+        <h1>
+            <strong>Chotu</strong> 
+        </h1>
+        <h2>
+            A quick & hassle-free url shortner service.
+        </h2>
+        <p>
+            Just enter your url below & get a instant short url. <br><br> Visit your-chotu-link/stats to get detailed statistics for usage of the short url.
+        </p>
+        <form action="/submit" method="get">
+            <div class="formComponent">
+                <label for="longUrlInput"> Your Long URL*:</label>
+                <div>
+                    <input type="url" id="longUrlInput" name="longUrl" required>
+                    <span class="validity"></span>
+                </div>
+            </div>
+            <div class="formComponent">
+                <label for="shortCodeInput">Your desired Short Code:</label>
+                <div>
+                    <input type="text" name="shortCode" minlength="4" pattern="[a-zA-Z0-9]{4,}">
+                    <span class="validity"></span>
+                </div>
+            </div>
 
-        <div>
-            <button type="submit">Get a Chotu</button>
-        </div>
-    </form>
+            <div>
+                <button type="submit">Get a Chotu</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
