@@ -1,9 +1,8 @@
-const { response } = require("express");
 let urlDataDB = require('../MongoUtil').getUrlDataDB;
 const config = require('../config')
 
 async function GenerateNewCodeController(req,res) {
-        const {longUrl, shortCode} = req.query;
+        let {longUrl, shortCode} = req.query;
         // console.log({req,res});
         
         //if no Long URL exists throw an error.
@@ -15,9 +14,22 @@ async function GenerateNewCodeController(req,res) {
 
         //if a preferred Short Code has been entered by the user.
         else if(shortCode) {
-            
+            shortCode = shortCode.toLowerCase();
+
+            if (shortCode.length < 4) {
+                res.json({
+                    error: "Bad request, minimum length for preferred short code is 4 digits."
+                })
+            }
+
+            if(!longUrl.match(/((http:\/\/)|(https:\/\/))?www\.((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))/)) {
+                res.json({
+                    error: "Bad request, URL is invalid."
+                })
+            }
+
             let getData = await urlDataDB().findOne({
-                                shortCode: shortCode   
+                                shortCode: shortCode
                             });  
 
             // console.log({getData});
@@ -58,7 +70,7 @@ async function GenerateNewCodeController(req,res) {
 
                 //Check if the code already exists in database
                 let getData = await urlDataDB().findOne({
-                    shortCode: tempCode   
+                    shortCode: tempCode
                 });  
 
                 //assign the new code if the temp-code doesnt exist in database.

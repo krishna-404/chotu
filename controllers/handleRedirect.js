@@ -10,10 +10,10 @@ async function HandleRedirect(req, res) {
 
     //Check if the Short Code exists in data
     const getData = await urlDataDB().findOne({
-                        shortCode: shortCode                
+                        shortCode: shortCode
                     })
     
-    // console.log({getData});
+    console.log({getData});
 
     //Redirect to Long Url if the Short Code exists in the system.
     if(getData){
